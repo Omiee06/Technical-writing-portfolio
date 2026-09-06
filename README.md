@@ -1,7 +1,5 @@
 # Technical Writing Portfolio
 
-Welcome to my technical writing portfolio.
-
 This repository showcases software documentation projects, including user guides, tutorials, API documentation, and AI-assisted documentation.
 
 ## About Me
