@@ -36,7 +36,7 @@
   - [6.3 Task status](#63-task-status)
   - [6.4 Task deletion](#64-task-deletion)
   - [6.5 Search](#65-search)
-  - [6.6 Filetering](#66-filtering)
+  - [6.6 Filtering](#66-filtering)
 - [7. FAQ](#7-faq)
 - [8. Help and Support](#8-help-and-support)
 
