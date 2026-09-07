@@ -144,8 +144,8 @@ The task must already exist.
 **Expected result:**  
 The updated task information is saved and the task can be viewed with the updated details.
 
-**Note:**  
-Any user who can view a task can edit it.
+> [!Note]  
+> Any user who can view a task can edit it.
 
 ---
 
@@ -166,8 +166,8 @@ The task must already exist.
 **Expected result:**  
 The updated task status is saved and can be viewed in the task list.
 
-**Note:**  
-Users can move a task between **To Do**, **In Progress**, and **Completed** statuses, including moving a task back to an earlier status.
+> [!Note]    
+> Users can move a task between **To Do**, **In Progress**, and **Completed** statuses, including moving a task back to an earlier status.
 
 ---
 
@@ -187,8 +187,8 @@ The task must already exist.
 **Expected result:**  
 The task is deleted from TaskFlow.
 
-**Note:**  
-Deleted tasks cannot be restored.
+> [!Note]   
+> Deleted tasks cannot be restored.
 
 ---
 
@@ -288,8 +288,8 @@ Refresh the page.
 **Expected result:**  
 The deleted task no longer appears in the task list.
 
-**Note:**  
-Deleted tasks cannot be restored.
+> [!Note]   
+> Deleted tasks cannot be restored.
 
 ---
 
@@ -318,8 +318,8 @@ The selected status filter has not been applied.
 **Resolution:**  
 Select the required status and apply the filter.
 
-**Note:**  
-Users can filter tasks by status, but not by priority or due date.
+> [!Note]   
+> Users can filter tasks by status, but not by priority or due date.
 
 ---
 
