@@ -14,3 +14,8 @@ I am currently developing my knowledge of software documentation practices and b
 
 - [TaskFlow User Guide](user-guides/taskflow-user-guide/README.md)  
   A sample software user guide covering task creation, task management, status tracking, search, filtering, troubleshooting, and FAQs.
+
+### Design and Implementation Guide
+
+- [Research assistant GPT](Design-and-Implementation-guide/Research-assistant-GPT/README.md)
+  A sample design of research assistant for technical writers.
