@@ -14,7 +14,7 @@
 # Table of contents
 
 - [1. Introduction](#1-introduction)
-  - [1.1 About TaskFLow](#11-about-taskflow)
+  - [1.1 About TaskFlow](#11-about-taskflow)
   - [1.2 Audeince](#12-audience)
   - [1.3 Key capabilities](#13-key-capabilities)
   - [1.4 Scope ](#14-scope)
@@ -27,7 +27,7 @@
 - [4. Managing tasks](#4-managing-tasks)
   - [4.1 Create a task](#41-create-a-task)
   - [4.2 Edit a task](#42-edit-a-task)
-  - [4.3 Update task satuts](#43-update-task-status)
+  - [4.3 Update task status](#43-update-task-status)
   - [4.4 Delete a task](#44-delete-a-task)
 - [5. Search and Filter](#5-search-and-filter)
 - [6. Troubleshooting](#6-troubleshooting)
