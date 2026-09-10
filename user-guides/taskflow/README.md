@@ -237,7 +237,7 @@ The newly created task appears in the task list.
 - The due date is earlier than the current date.
 
 **Resolution:**  
-Correct the missing or invalid information and save the task again.
+Correct the missing or invalid information and create the task again.
 
 **Expected result:**  
 The task is created.
