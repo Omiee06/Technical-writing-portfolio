@@ -72,11 +72,11 @@ Access TaskFlow through a web browser.
 
 ## 2.2 Dashboard overview
 
-The dashboard provides an overvie of tasks, task statuses, filtering options, and upcoming due dates.
+The dashboard provides an overview of tasks, task statuses, filtering options, and upcoming due dates.
 
 ## 2.3 Common task workflow
 
-A  typical task workflow may inlcude:
+A  typical task workflow may include:
 
 1. Create a task.
 2. Edit task information when required.
@@ -86,13 +86,13 @@ A  typical task workflow may inlcude:
 
 ## 2.4 Task status
 
-TaskFlow uses three type of status to trach tasks:
+TaskFlow uses three types of status to track tasks:
 
 1. **To Do.**
 2. **In Progress.**
 3. **Completed.**
 
-Users can update a tasks status to reflect its current state and mark a task as completed when the work is finished.
+Users can update a task's status to reflect its current state and mark a task as completed when the work is finished.
 
 ---
 
@@ -107,7 +107,7 @@ The dashboard provides an overview of tasks and their current statuses. Users ca
 ## 4.1 Create a Task
 
 **Purpose:**  
-This feature allows users to create a task that can be organized and tracked in TaskFlow.
+This feature lets users create a task to organize and track in TaskFlow.
 
 **Prerequisite:**  
 No prerequisites are currently defined.
@@ -152,7 +152,7 @@ The updated task information is saved and the task can be viewed with the update
 ## 4.3 Update Task Status
 
 **Purpose:**  
-This feature allows users to update the status of a task.
+This feature allows users to update a task status.
 
 **Prerequisite:**  
 The task must already exist.
