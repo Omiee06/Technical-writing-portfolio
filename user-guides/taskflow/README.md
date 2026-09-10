@@ -1,10 +1,10 @@
 # TaskFlow user guide
 
 | **Document information** | **Details** | 
-| --- | --- | 
+| :---: | :---: | 
 | Title | TaskFlow user guide | 
 | Version |  0.1 | 
-| Status | Draft | 
+|  Status |  Draft | 
 | Audience | Individual user and small team members | 
 | Product | TaskFlow | 
 | Last updated | 07 September 2026 | 
