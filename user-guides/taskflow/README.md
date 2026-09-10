@@ -205,12 +205,11 @@ This feature allows users to search for and filter tasks.
 **Expected result:**  
 The task list displays tasks that match the search or filter criteria.
 
-**Notes:**
-
-- Search accepts partial or complete task titles.
-- Search is case-sensitive.
-- Tasks can be filtered by status.
-- Filtering by priority or due date is not supported.
+> [!Note]
+> - Search accepts partial or complete task titles.
+> - Search is case-sensitive.
+> - Tasks can be filtered by status.
+> - Filtering by priority or due date is not supported.
 
 ---
 
