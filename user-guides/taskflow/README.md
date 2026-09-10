@@ -228,7 +228,7 @@ Refresh the page.
 **Expected result:**  
 The newly created task appears in the task list.
 
-### A task cannot be saved
+### Task creation failed
 
 **Causes:**
 
@@ -240,7 +240,7 @@ The newly created task appears in the task list.
 Correct the missing or invalid information and save the task again.
 
 **Expected result:**  
-The task is saved.
+The task is created.
 
 ---
 
