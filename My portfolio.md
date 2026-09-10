@@ -18,4 +18,4 @@ I am currently developing my knowledge of software documentation practices and b
 ### Design and Implementation Guide
 
 - [Research assistant GPT](Design-and-Implementation-guide/Research-assistant-GPT/README.md)
-  A sample design of research assistant for technical writers.
+  A sample design of a research assistant for technical writers.
