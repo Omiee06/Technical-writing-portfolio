@@ -10,7 +10,7 @@ I am currently developing my knowledge of software documentation practices and b
 
 ## Documentation Projects
 
-### User Guides
+### User Guide
 
 - [TaskFlow User Guide](user-guides/taskflow/README.md)  
   A sample software user guide covering task creation, task management, status tracking, search, filtering, troubleshooting, and FAQs.
