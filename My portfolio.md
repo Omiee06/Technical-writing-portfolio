@@ -4,9 +4,11 @@ This repository showcases software documentation projects, including user guides
 
 ## About Me
 
-I am a technical documentation professional with experience in Airbus programs at ALTEN India. I have worked on IPC, AMM, and SRM documentation and have experience analyzing structured documentation, engineering drawing sheets, Technical Repercussion Sheets (TRS), and Service Bulletins (SBs). This experience has strengthened my analytical, technical communication, and documentation skills, which I am now applying to my transition into software technical writing.
+I am a Software Technical Writer with 2+ years of experience in aerospace technical documentation, supporting Airbus engineering and technical-publication workflows. My experience includes developing User Guides, Installation Guides, Procedural Guides, and Troubleshooting Documentation for software applications and technical workflows.
 
-I am currently developing my knowledge of software documentation practices and building hands-on documentation projects. My areas of focus include user guides, installation guides, API documentation, and AI-assisted documentation. Through this portfolio, I aim to demonstrate my ability to research, structure, simplify, and communicate technical information for software users and technical audiences.
+I work with requirements analysis, complex engineering and software workflows, SME collaboration, technical reviews, and documentation quality checks to produce clear, structured, and task-oriented content for technical users. My aerospace experience also includes hands-on exposure to 3D model validation, component integration, metadata-driven workflows, and aerospace documentation standards.
+
+My software documentation interests and hands-on work include API documentation fundamentals, REST APIs, Markdown, Git/GitHub, Postman, OpenAPI/Swagger, and AI-assisted documentation. Through this portfolio, I demonstrate my ability to research technical subjects, understand software workflows, structure information effectively, and turn complex technical concepts into clear and usable documentation.
 
 ## Documentation Projects
 
