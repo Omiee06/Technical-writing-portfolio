@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TaskFlow User Guide — A user guide for creating, organizing, tracking, and troubleshooting tasks in TaskFlow.">
+  <meta name="theme-color" content="#0b1220">
+  <title>TaskFlow User Guide | Omkar Musale</title>
+  <style>
+    :root{--bg:#0b1220;--panel:#111c2e;--panel2:#142238;--text:#edf3fb;--muted:#a8b6c9;--line:rgba(173,193,219,.16);--accent:#72b7ff;--accent2:#3d96f5;--max:1440px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.75 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    a{color:var(--accent)}.topbar{height:66px;position:sticky;top:0;z-index:10;background:rgba(11,18,32,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    .top-inner{height:100%;max-width:var(--max);padding:0 28px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{font-weight:800;letter-spacing:-.04em;text-decoration:none;color:var(--text)}.brand span{color:var(--accent)}.back{font-size:.9rem;text-decoration:none;color:var(--muted)}.back:hover{color:var(--text)}
+    .layout{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:270px minmax(0,1fr) 190px;gap:34px;padding:32px 28px 80px}
+    .sidebar{position:sticky;top:96px;align-self:start;max-height:calc(100vh - 120px);overflow:auto;padding:8px 4px 20px}
+    .side-label{color:var(--muted);font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin:0 0 13px 10px}
+    .toc-link{display:block;text-decoration:none;color:#aebed2;font-size:.84rem;line-height:1.4;padding:7px 10px;border-radius:7px;border-left:2px solid transparent}
+    .toc-link:hover{color:var(--text);background:rgba(255,255,255,.04);border-left-color:var(--accent)}.level-1{padding-left:22px}.level-2{padding-left:34px;font-size:.8rem}
+    main{min-width:0;max-width:850px}.doc-header{padding:20px 0 28px;border-bottom:1px solid var(--line);margin-bottom:30px}
+    .eyebrow{color:var(--accent);font-size:.75rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase}
+    .doc-header h1{font-size:clamp(2.1rem,4vw,3.2rem);line-height:1.12;letter-spacing:-.055em;margin:10px 0}
+    .doc-header p{color:var(--muted);margin:0;max-width:680px}
+    .content h1{font-size:2rem;letter-spacing:-.04em;line-height:1.2;margin:2.5em 0 .7em;padding-bottom:.45em;border-bottom:1px solid var(--line)}
+    .content h2{font-size:1.5rem;letter-spacing:-.03em;line-height:1.3;margin:2em 0 .6em}
+    .content h3{font-size:1.15rem;margin:1.6em 0 .45em}.content p,.content li{color:#c4d1e1}
+    .content strong{color:var(--text)}.content ul,.content ol{padding-left:1.5rem}.content li{padding-left:.25rem;margin:.3em 0}
+    .content table{width:100%;border-collapse:collapse;display:block;overflow-x:auto;margin:22px 0;font-size:.92rem}
+    .content th,.content td{border:1px solid var(--line);padding:10px 13px;text-align:left;min-width:120px}
+    .content th{background:var(--panel2);color:var(--text)}.content tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+    .content blockquote{margin:22px 0;padding:14px 18px;border-left:3px solid var(--accent);background:rgba(114,183,255,.07);border-radius:0 9px 9px 0;color:var(--muted)}
+    .content blockquote p{margin:.2em 0}.content hr{border:0;border-top:1px solid var(--line);margin:32px 0}
+    .content a{text-decoration:none}.content a:hover{text-decoration:underline}
+    .right-rail{position:sticky;top:100px;align-self:start;border-left:1px solid var(--line);padding:8px 0 8px 18px;color:var(--muted);font-size:.8rem}
+    .right-rail strong{display:block;color:var(--text);margin-bottom:8px}.right-rail a{display:block;color:var(--muted);text-decoration:none;margin:7px 0}.right-rail a:hover{color:var(--accent)}
+    footer{border-top:1px solid var(--line);padding:24px 28px;color:#8293aa;font-size:.82rem}.footer-inner{max-width:var(--max);margin:auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    @media(max-width:1100px){.layout{grid-template-columns:230px minmax(0,1fr)}.right-rail{display:none}}
+    @media(max-width:720px){.top-inner{padding:0 18px}.layout{display:block;padding:22px 18px 60px}.sidebar{position:static;max-height:none;border:1px solid var(--line);border-radius:12px;padding:15px;margin-bottom:28px;background:var(--panel)}.sidebar nav{display:grid;grid-template-columns:1fr 1fr;gap:2px 8px}.toc-link{font-size:.78rem}.level-2{display:none}.doc-header{padding-top:8px}footer{padding:20px 18px}}
+  </style>
+</head>
+<body>
+  <header class="topbar"><div class="top-inner">
+    <a class="brand" href="../../index.html">OM<span>.</span></a>
+    <a class="back" href="../../index.html">← Back to portfolio</a>
+  </div></header>
+  <div class="layout">
+    <aside class="sidebar"><div class="side-label">On this page</div><nav aria-label="Document navigation">
+      <a class="toc-link level-0" href="#1-introduction">1. Introduction</a><a class="toc-link level-1" href="#11-about-taskflow">1.1 About TaskFlow</a><a class="toc-link level-1" href="#12-audience">1.2 Audience</a><a class="toc-link level-1" href="#13-key-capabilities">1.3 Key capabilities</a><a class="toc-link level-1" href="#14-scope">1.4 Scope</a><a class="toc-link level-0" href="#2-getting-started">2. Getting started</a><a class="toc-link level-1" href="#21-access">2.1 Access</a><a class="toc-link level-1" href="#22-dashboard-overview">2.2 Dashboard overview</a><a class="toc-link level-1" href="#23-common-task-workflow">2.3 Common task workflow</a><a class="toc-link level-1" href="#24-task-status">2.4 Task status</a><a class="toc-link level-0" href="#3-dashboard">3. Dashboard</a><a class="toc-link level-0" href="#4-managing-tasks">4. Managing tasks</a><a class="toc-link level-1" href="#41-create-a-task">4.1 Create a Task</a><a class="toc-link level-1" href="#42-edit-a-task">4.2 Edit a Task</a><a class="toc-link level-1" href="#43-update-task-status">4.3 Update Task Status</a><a class="toc-link level-1" href="#44-delete-a-task">4.4 Delete a task</a><a class="toc-link level-0" href="#5-search-and-filter">5. Search and Filter</a><a class="toc-link level-0" href="#6-troubleshooting">6. Troubleshooting</a><a class="toc-link level-1" href="#61-task-creation">6.1 Task creation</a><a class="toc-link level-2" href="#a-task-does-not-appear-in-the-task-list-after-creation">A task does not appear in the task list after creation</a><a class="toc-link level-2" href="#task-creation-failed">Task creation failed</a><a class="toc-link level-1" href="#62-task-editing">6.2 Task editing</a><a class="toc-link level-2" href="#changes-to-a-task-are-not-saved">Changes to a task are not saved</a><a class="toc-link level-1" href="#63-task-status">6.3 Task status</a><a class="toc-link level-2" href="#the-task-status-does-not-change">The task status does not change</a><a class="toc-link level-1" href="#64-task-deletion">6.4 Task deletion</a><a class="toc-link level-2" href="#a-deleted-task-still-appears-in-the-task-list">A deleted task still appears in the task list</a><a class="toc-link level-1" href="#65-search">6.5 Search</a><a class="toc-link level-2" href="#search-does-not-return-results-for-a-matching-task">Search does not return results for a matching task</a><a class="toc-link level-1" href="#66-filtering">6.6 Filtering</a><a class="toc-link level-2" href="#the-selected-filter-does-not-work">The selected filter does not work</a><a class="toc-link level-0" href="#7-faq">7. FAQ</a><a class="toc-link level-1" href="#how-do-i-create-a-task">How do I create a task?</a><a class="toc-link level-1" href="#how-do-i-edit-a-task">How do I edit a task?</a><a class="toc-link level-1" href="#how-do-i-change-the-status-of-a-task">How do I change the status of a task?</a><a class="toc-link level-1" href="#how-do-i-delete-a-task">How do I delete a task?</a><a class="toc-link level-1" href="#how-can-i-search-for-a-task">How can I search for a task?</a><a class="toc-link level-0" href="#8-help-and-support">8. Help and Support</a><a class="toc-link level-1" href="#support-information">Support Information</a>
+    </nav></aside>
+    <main>
+      <header class="doc-header">
+        <div class="eyebrow">Technical documentation / Portfolio project</div>
+        <h1>TaskFlow User Guide</h1>
+        <p>A user guide for creating, organizing, tracking, and troubleshooting tasks in TaskFlow.</p>
+      </header>
+      <article class="content"><h1 id="taskflow-user-guide">TaskFlow user guide</h1>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><strong>Document information</strong></th>
+<th style="text-align:center"><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Title</td>
+<td style="text-align:center">TaskFlow user guide</td>
+</tr>
+<tr>
+<td style="text-align:center">Version</td>
+<td style="text-align:center">0.1</td>
+</tr>
+<tr>
+<td style="text-align:center">Status</td>
+<td style="text-align:center">Draft</td>
+</tr>
+<tr>
+<td style="text-align:center">Audience</td>
+<td style="text-align:center">Individual user and small team members</td>
+</tr>
+<tr>
+<td style="text-align:center">Product</td>
+<td style="text-align:center">TaskFlow</td>
+</tr>
+<tr>
+<td style="text-align:center">Last updated</td>
+<td style="text-align:center">07 September 2026</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h1 id="table-of-contents">Table of contents</h1>
+<ul>
+<li><a href="#1-introduction">1. Introduction</a><ul>
+<li><a href="#11-about-taskflow">1.1 About TaskFlow</a></li>
+<li><a href="#12-audience">1.2 Audeince</a></li>
+<li><a href="#13-key-capabilities">1.3 Key capabilities</a></li>
+<li><a href="#14-scope">1.4 Scope </a></li>
+</ul>
+</li>
+<li><a href="#2-getting-started">2. Getting started </a><ul>
+<li><a href="#21-access">2.1 Access</a></li>
+<li><a href="#22-dashboard-overview">2.2 Dashboard overview</a></li>
+<li><a href="#23-common-task-workflow">2.3 Common task workflow</a></li>
+<li><a href="#24-task-status">2.4 Task status</a></li>
+</ul>
+</li>
+<li><a href="#3-dashboard">3. Dashboard</a></li>
+<li><a href="#4-managing-tasks">4. Managing tasks</a><ul>
+<li><a href="#41-create-a-task">4.1 Create a task</a></li>
+<li><a href="#42-edit-a-task">4.2 Edit a task</a></li>
+<li><a href="#43-update-task-status">4.3 Update task status</a></li>
+<li><a href="#44-delete-a-task">4.4 Delete a task</a></li>
+</ul>
+</li>
+<li><a href="#5-search-and-filter">5. Search and Filter</a></li>
+<li><a href="#6-troubleshooting">6. Troubleshooting</a><ul>
+<li><a href="#61-task-creation">6.1 Task creation</a></li>
+<li><a href="#62-task-editing">6.2 Task editing</a></li>
+<li><a href="#63-task-status">6.3 Task status</a></li>
+<li><a href="#64-task-deletion">6.4 Task deletion</a></li>
+<li><a href="#65-search">6.5 Search</a></li>
+<li><a href="#66-filtering">6.6 Filtering</a></li>
+</ul>
+</li>
+<li><a href="#7-faq">7. FAQ</a></li>
+<li><a href="#8-help-and-support">8. Help and Support</a></li>
+</ul>
+<h1 id="1-introduction">1. Introduction</h1>
+<h2 id="11-about-taskflow">1.1 About TaskFlow</h2>
+<p>TaskFlow is a web-based task management application that allows users to create, organize, and track tasks. Users can add task details, including titles, descriptions, due dates, and priorities.</p>
+<h2 id="12-audience">1.2 Audience</h2>
+<p>This guide is intended for individual users and small team members who use TaskFlow to create, organize, and track tasks.</p>
+<h2 id="13-key-capabilities">1.3 Key capabilities</h2>
+<ul>
+<li><strong>Manage tasks:</strong> Create tasks with titles, descriptions, due dates, and priorities; edit or delete existing tasks.</li>
+<li><strong>Track progress:</strong> Update task status between <strong>To Do</strong>, <strong>In Progress</strong>, and <strong>Completed.</strong></li>
+<li><strong>Find tasks:</strong> Search for tasks by title.</li>
+<li><strong>Filter tasks:</strong> Filter the task list by status.</li>
+</ul>
+<h2 id="14-scope">1.4 Scope</h2>
+<p>This guide covers the core TaskFlow workflows for creating, editing, updating, and deleting tasks. It also covers the dashboard, task search by title, status-based filtering, and common troubleshooting issues.</p>
+<hr/>
+<h1 id="2-getting-started">2. Getting started</h1>
+<h2 id="21-access">2.1 Access</h2>
+<p>Access TaskFlow through a web browser.</p>
+<h2 id="22-dashboard-overview">2.2 Dashboard overview</h2>
+<p>The dashboard provides an overview of tasks, task statuses, filtering options, and upcoming due dates.</p>
+<h2 id="23-common-task-workflow">2.3 Common task workflow</h2>
+<p>A  typical task workflow may include:</p>
+<ol>
+<li>Create a task.</li>
+<li>Edit task information when required.</li>
+<li>Update the task status.</li>
+<li>Search for or filter tasks.</li>
+<li>Mark the task as completed when the work is finished.</li>
+</ol>
+<h2 id="24-task-status">2.4 Task status</h2>
+<p>TaskFlow uses three types of status to track tasks:</p>
+<ol>
+<li><strong>To Do.</strong></li>
+<li><strong>In Progress.</strong></li>
+<li><strong>Completed.</strong></li>
+</ol>
+<p>Users can update a task's status to reflect its current state and mark a task as completed when the work is finished.</p>
+<hr/>
+<h1 id="3-dashboard">3. Dashboard</h1>
+<p>The dashboard provides an overview of tasks and their current statuses. Users can view their tasks, apply status-based filters, and view upcoming due dates.</p>
+<hr/>
+<h1 id="4-managing-tasks">4. Managing tasks</h1>
+<h2 id="41-create-a-task">4.1 Create a Task</h2>
+<p><strong>Purpose:</strong><br/>
+This feature lets users create a task to organize and track in TaskFlow.</p>
+<p><strong>Prerequisite:</strong><br/>
+No prerequisites are currently defined.</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Select <strong>Create Task</strong>.</li>
+<li>Enter the task title.</li>
+<li>Enter a description.</li>
+<li>Set a due date.</li>
+<li>Set the task priority.</li>
+<li>Select <strong>Create</strong>.</li>
+</ol>
+<p><strong>Expected result:</strong><br/>
+The task is created and can be viewed in TaskFlow with its due date.</p>
+<hr/>
+<h2 id="42-edit-a-task">4.2 Edit a Task</h2>
+<p><strong>Purpose:</strong><br/>
+This feature allows users to edit task information.</p>
+<p><strong>Prerequisite:</strong><br/>
+The task must already exist.</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Open the task you want to modify.</li>
+<li>Select <strong>Edit</strong>.</li>
+<li>Update the task title, description, due date, or priority as needed.</li>
+<li>Select <strong>Save</strong>.</li>
+</ol>
+<p><strong>Expected result:</strong><br/>
+The updated task information is saved and the task can be viewed with the updated details.</p>
+<blockquote>
+<p>[!Note]<br/>
+Any user who can view a task can edit it.</p>
+</blockquote>
+<hr/>
+<h2 id="43-update-task-status">4.3 Update Task Status</h2>
+<p><strong>Purpose:</strong><br/>
+This feature allows users to update a task status.</p>
+<p><strong>Prerequisite:</strong><br/>
+The task must already exist.</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Open the task you want to update.</li>
+<li>Change the task status to <strong>To Do</strong>, <strong>In Progress</strong>, or <strong>Completed</strong>.</li>
+<li>Select <strong>Save</strong>.</li>
+</ol>
+<p><strong>Expected result:</strong><br/>
+The updated task status is saved and can be viewed in the task list.</p>
+<blockquote>
+<p>[!Note]<br/>
+Users can move a task between <strong>To Do</strong>, <strong>In Progress</strong>, and <strong>Completed</strong> statuses, including moving a task back to an earlier status.</p>
+</blockquote>
+<hr/>
+<h2 id="44-delete-a-task">4.4 Delete a task</h2>
+<p><strong>Purpose:</strong><br/>
+This feature allows users to delete a task.</p>
+<p><strong>Prerequisite:</strong><br/>
+The task must already exist.</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Open the task you want to delete.</li>
+<li>Select <strong>Delete</strong>.</li>
+</ol>
+<p><strong>Expected result:</strong><br/>
+The task is deleted from TaskFlow.</p>
+<blockquote>
+<p>[!Note]<br/>
+Deleted tasks cannot be restored.</p>
+</blockquote>
+<hr/>
+<h1 id="5-search-and-filter">5. Search and Filter</h1>
+<p><strong>Purpose:</strong><br/>
+This feature allows users to search for and filter tasks.</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Enter the task title in the search field.</li>
+<li>Select the filter option and choose the required task status.</li>
+</ol>
+<p><strong>Expected result:</strong><br/>
+The task list displays tasks that match the search or filter criteria.</p>
+<blockquote>
+<p>[!Note]</p>
+<ul>
+<li>Search accepts partial or complete task titles.</li>
+<li>Search is case-sensitive.</li>
+<li>Tasks can be filtered by status.</li>
+<li>Filtering by priority or due date is not supported.</li>
+</ul>
+</blockquote>
+<hr/>
+<h1 id="6-troubleshooting">6. Troubleshooting</h1>
+<h2 id="61-task-creation">6.1 Task creation</h2>
+<h3 id="a-task-does-not-appear-in-the-task-list-after-creation">A task does not appear in the task list after creation</h3>
+<p><strong>Cause:</strong><br/>
+The task list has not been refreshed.</p>
+<p><strong>Resolution:</strong><br/>
+Refresh the page.</p>
+<p><strong>Expected result:</strong><br/>
+The newly created task appears in the task list.</p>
+<h3 id="task-creation-failed">Task creation failed</h3>
+<p><strong>Causes:</strong></p>
+<ul>
+<li>The task title is missing.</li>
+<li>The task title exceeds 100 characters.</li>
+<li>The due date is earlier than the current date.</li>
+</ul>
+<p><strong>Resolution:</strong><br/>
+Correct the missing or invalid information and create the task again.</p>
+<p><strong>Expected result:</strong><br/>
+The task is created.</p>
+<hr/>
+<h2 id="62-task-editing">6.2 Task editing</h2>
+<h3 id="changes-to-a-task-are-not-saved">Changes to a task are not saved</h3>
+<p><strong>Cause:</strong><br/>
+The changes have not been saved.</p>
+<p><strong>Resolution:</strong><br/>
+Select <strong>Save</strong> after making the required changes.</p>
+<p><strong>Expected result:</strong><br/>
+The updated task information is saved.</p>
+<hr/>
+<h2 id="63-task-status">6.3 Task status</h2>
+<h3 id="the-task-status-does-not-change">The task status does not change</h3>
+<p><strong>Cause:</strong><br/>
+The status change has not been saved.</p>
+<p><strong>Resolution:</strong><br/>
+Select <strong>Save</strong> after changing the task status.</p>
+<p><strong>Expected result:</strong><br/>
+The updated task status is displayed in the task list.</p>
+<hr/>
+<h2 id="64-task-deletion">6.4 Task deletion</h2>
+<h3 id="a-deleted-task-still-appears-in-the-task-list">A deleted task still appears in the task list</h3>
+<p><strong>Cause:</strong><br/>
+The page has not been refreshed.</p>
+<p><strong>Resolution:</strong><br/>
+Refresh the page.</p>
+<p><strong>Expected result:</strong><br/>
+The deleted task no longer appears in the task list.</p>
+<blockquote>
+<p>[!Note]<br/>
+Deleted tasks cannot be restored.</p>
+</blockquote>
+<hr/>
+<h2 id="65-search">6.5 Search</h2>
+<h3 id="search-does-not-return-results-for-a-matching-task">Search does not return results for a matching task</h3>
+<p><strong>Cause:</strong><br/>
+The search is case-sensitive.</p>
+<p><strong>Resolution:</strong><br/>
+Enter the task title using the correct capitalization.</p>
+<p><strong>Note:</strong><br/>
+Search accepts partial or complete task titles.</p>
+<hr/>
+<h2 id="66-filtering">6.6 Filtering</h2>
+<h3 id="the-selected-filter-does-not-work">The selected filter does not work</h3>
+<p><strong>Cause:</strong><br/>
+The selected status filter has not been applied.</p>
+<p><strong>Resolution:</strong><br/>
+Select the required status and apply the filter.</p>
+<blockquote>
+<p>[!Note]<br/>
+Users can filter tasks by status, but not by priority or due date.</p>
+</blockquote>
+<hr/>
+<h1 id="7-faq">7. FAQ</h1>
+<h2 id="how-do-i-create-a-task">How do I create a task?</h2>
+<p>Follow the steps in <a href="#41-create-a-task">Create a task</a>.</p>
+<h2 id="how-do-i-edit-a-task">How do I edit a task?</h2>
+<p>Follow the steps in <a href="#42-edit-a-task">Edit a task</a>.</p>
+<h2 id="how-do-i-change-the-status-of-a-task">How do I change the status of a task?</h2>
+<p>Follow the steps in <a href="#43-update-task-status">Update Task Status</a>.</p>
+<h2 id="how-do-i-delete-a-task">How do I delete a task?</h2>
+<p>Follow the steps in <a href="#44-delete-a-task">Delete a Task</a>.</p>
+<h2 id="how-can-i-search-for-a-task">How can I search for a task?</h2>
+<p>Enter the task title in the search field. TaskFlow supports searches using partial or complete task titles.</p>
+<hr/>
+<h1 id="8-help-and-support">8. Help and Support</h1>
+<p>If you need assistance with TaskFlow, contact the TaskFlow support team through the available support channels.</p>
+<h2 id="support-information">Support Information</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Support Option</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Email</td>
+<td>To be provided</td>
+</tr>
+<tr>
+<td>Phone</td>
+<td>To be provided</td>
+</tr>
+<tr>
+<td>Support Hours</td>
+<td>To be provided</td>
+</tr>
+<tr>
+<td>Support Website</td>
+<td>To be provided</td>
+</tr>
+</tbody>
+</table>
+<p>For information about common TaskFlow issues, see the <a href="#6-troubleshooting">Troubleshooting</a>.</p>
+</article>
+    </main>
+    <aside class="right-rail"><strong>Reading guide</strong><a href="#taskflow-user-guide">Start reading ↑</a><a href="../../index.html">Portfolio home</a></aside>
+  </div>
+  <footer><div class="footer-inner"><span>© 2026 Omkar Musale</span><span>Technical Writing Portfolio</span></div></footer>
+</body>
+</html>
