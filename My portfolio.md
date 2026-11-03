@@ -19,5 +19,5 @@ My documentation interests and hands-on work include API documentation fundament
 
 ### Design and Implementation Guide
 
-- [Research assistant GPT](Design-and-Implementation-guide/Research-assistant-GPT/README.md)                                                                                                                                   
+- [Research assistant GPT](docs/Design-and-Implementation-guide/Research Assistant GPT.md)                                                                                                                                  
   A sample design of a research assistant for technical writers.
