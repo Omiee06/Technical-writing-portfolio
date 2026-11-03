@@ -14,7 +14,7 @@ My documentation interests and hands-on work include API documentation fundament
 
 ### User Guide
 
-- [TaskFlow User Guide](user-guides/taskflow/README.md)  
+- [TaskFlow User Guide](docs/user-guide/TaskFlow.md)  
   A sample software user guide covering task creation, task management, status tracking, search, filtering, troubleshooting, and FAQs.
 
 ### Design and Implementation Guide
