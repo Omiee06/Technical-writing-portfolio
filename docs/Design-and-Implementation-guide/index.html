@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Research Assistant GPT — A design and implementation guide for a research assistant workflow for technical writers.">
+  <meta name="theme-color" content="#0b1220">
+  <title>Research Assistant GPT | Omkar Musale</title>
+  <style>
+    :root{--bg:#0b1220;--panel:#111c2e;--panel2:#142238;--text:#edf3fb;--muted:#a8b6c9;--line:rgba(173,193,219,.16);--accent:#72b7ff;--accent2:#3d96f5;--max:1440px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.75 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    a{color:var(--accent)}.topbar{height:66px;position:sticky;top:0;z-index:10;background:rgba(11,18,32,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    .top-inner{height:100%;max-width:var(--max);padding:0 28px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{font-weight:800;letter-spacing:-.04em;text-decoration:none;color:var(--text)}.brand span{color:var(--accent)}.back{font-size:.9rem;text-decoration:none;color:var(--muted)}.back:hover{color:var(--text)}
+    .layout{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:270px minmax(0,1fr) 190px;gap:34px;padding:32px 28px 80px}
+    .sidebar{position:sticky;top:96px;align-self:start;max-height:calc(100vh - 120px);overflow:auto;padding:8px 4px 20px}
+    .side-label{color:var(--muted);font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin:0 0 13px 10px}
+    .toc-link{display:block;text-decoration:none;color:#aebed2;font-size:.84rem;line-height:1.4;padding:7px 10px;border-radius:7px;border-left:2px solid transparent}
+    .toc-link:hover{color:var(--text);background:rgba(255,255,255,.04);border-left-color:var(--accent)}.level-1{padding-left:22px}.level-2{padding-left:34px;font-size:.8rem}
+    main{min-width:0;max-width:850px}.doc-header{padding:20px 0 28px;border-bottom:1px solid var(--line);margin-bottom:30px}
+    .eyebrow{color:var(--accent);font-size:.75rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase}
+    .doc-header h1{font-size:clamp(2.1rem,4vw,3.2rem);line-height:1.12;letter-spacing:-.055em;margin:10px 0}
+    .doc-header p{color:var(--muted);margin:0;max-width:680px}
+    .content h1{font-size:2rem;letter-spacing:-.04em;line-height:1.2;margin:2.5em 0 .7em;padding-bottom:.45em;border-bottom:1px solid var(--line)}
+    .content h2{font-size:1.5rem;letter-spacing:-.03em;line-height:1.3;margin:2em 0 .6em}
+    .content h3{font-size:1.15rem;margin:1.6em 0 .45em}.content p,.content li{color:#c4d1e1}
+    .content strong{color:var(--text)}.content ul,.content ol{padding-left:1.5rem}.content li{padding-left:.25rem;margin:.3em 0}
+    .content table{width:100%;border-collapse:collapse;display:block;overflow-x:auto;margin:22px 0;font-size:.92rem}
+    .content th,.content td{border:1px solid var(--line);padding:10px 13px;text-align:left;min-width:120px}
+    .content th{background:var(--panel2);color:var(--text)}.content tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+    .content blockquote{margin:22px 0;padding:14px 18px;border-left:3px solid var(--accent);background:rgba(114,183,255,.07);border-radius:0 9px 9px 0;color:var(--muted)}
+    .content blockquote p{margin:.2em 0}.content hr{border:0;border-top:1px solid var(--line);margin:32px 0}
+    .content a{text-decoration:none}.content a:hover{text-decoration:underline}
+    .right-rail{position:sticky;top:100px;align-self:start;border-left:1px solid var(--line);padding:8px 0 8px 18px;color:var(--muted);font-size:.8rem}
+    .right-rail strong{display:block;color:var(--text);margin-bottom:8px}.right-rail a{display:block;color:var(--muted);text-decoration:none;margin:7px 0}.right-rail a:hover{color:var(--accent)}
+    footer{border-top:1px solid var(--line);padding:24px 28px;color:#8293aa;font-size:.82rem}.footer-inner{max-width:var(--max);margin:auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    @media(max-width:1100px){.layout{grid-template-columns:230px minmax(0,1fr)}.right-rail{display:none}}
+    @media(max-width:720px){.top-inner{padding:0 18px}.layout{display:block;padding:22px 18px 60px}.sidebar{position:static;max-height:none;border:1px solid var(--line);border-radius:12px;padding:15px;margin-bottom:28px;background:var(--panel)}.sidebar nav{display:grid;grid-template-columns:1fr 1fr;gap:2px 8px}.toc-link{font-size:.78rem}.level-2{display:none}.doc-header{padding-top:8px}footer{padding:20px 18px}}
+  </style>
+</head>
+<body>
+  <header class="topbar"><div class="top-inner">
+    <a class="brand" href="../../index.html">OM<span>.</span></a>
+    <a class="back" href="../../index.html">← Back to portfolio</a>
+  </div></header>
+  <div class="layout">
+    <aside class="sidebar"><div class="side-label">On this page</div><nav aria-label="Document navigation">
+      <a class="toc-link level-1" href="#preface">Preface</a><a class="toc-link level-1" href="#introduction">Introduction</a><a class="toc-link level-1" href="#build-a-research-assistant-gpt">Build a Research Assistant GPT</a><a class="toc-link level-2" href="#1-define-the-research-architecture">1. Define the Research Architecture</a><a class="toc-link level-2" href="#2-research-and-verify-information">2. Research and Verify Information</a><a class="toc-link level-2" href="#3-standardize-the-research-output">3. Standardize the Research Output</a><a class="toc-link level-2" href="#4-build-test-and-improve-the-gpt">4. Build, Test, and Improve the GPT</a><a class="toc-link level-1" href="#conclusion">Conclusion</a>
+    </nav></aside>
+    <main>
+      <header class="doc-header">
+        <div class="eyebrow">Technical documentation / Portfolio project</div>
+        <h1>Research Assistant GPT</h1>
+        <p>A design and implementation guide for a research assistant workflow for technical writers.</p>
+      </header>
+      <article class="content"><h1 id="research-assistant-gpt">Research Assistant GPT</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#preface">Preface</a></li>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#build-a-research-assistant-gpt">Build a Research Assistant GPT</a><ul>
+<li><a href="#1-define-the-research-architecture">1. Define the Research Architecture</a><ul>
+<li><a href="#establish-the-scope-and-requirements">Establish the Scope and Requirements</a></li>
+<li><a href="#establish-a-source-hierarchy">Establish a Source Hierarchy</a></li>
+<li><a href="#map-sources-to-technical-requirements">Map Sources to Technical Requirements</a></li>
+</ul>
+</li>
+<li><a href="#2-research-and-verify-information">2. Research and Verify Information</a><ul>
+<li><a href="#conduct-research-and-extract-evidence">Conduct Research and Extract Evidence</a></li>
+<li><a href="#evaluate-research-and-evidence">Evaluate Research and Evidence</a></li>
+<li><a href="#define-conflict-resolution-rules">Define Conflict-Resolution Rules</a></li>
+<li><a href="#define-information-gaps-and-verification-records">Define Information Gaps and Verification Records</a></li>
+</ul>
+</li>
+<li><a href="#3-standardize-the-research-output">3. Standardize the Research Output</a></li>
+<li><a href="#4-build-test-and-improve-the-gpt">4. Build, Test, and Improve the GPT</a><ul>
+<li><a href="#define-the-system-instructions">Define the System Instructions</a></li>
+<li><a href="#create-the-gpt-prompt">Create the GPT Prompt</a></li>
+<li><a href="#configure-the-custom-gpt">Configure the Custom GPT</a></li>
+<li><a href="#test-the-gpt">Test the GPT</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+<hr/>
+<h2 id="preface">Preface</h2>
+<p>Technical writers spend significant time researching, verifying, and organizing product information before creating documentation. This project addresses that challenge by using a <strong>Research Assistant GPT</strong> to standardize and automate repetitive research tasks.</p>
+<p>This guide explains the research methodology, GPT configuration, output structure, and testing process.</p>
+<h2 id="introduction">Introduction</h2>
+<p>Technical writing involves creating, revising, and maintaining documentation for technical products, systems, and processes. The documentation development process consists of multiple phases, including research.</p>
+<p>Research requires technical writers to locate relevant information, evaluate sources, verify technical details, and identify information gaps before creating documentation.</p>
+<p>A Research Assistant GPT can support this process by automating repetitive research and analysis tasks. The GPT collects relevant information, evaluates evidence, identifies conflicts and information gaps, and organizes findings into a structured research report.</p>
+<h2 id="build-a-research-assistant-gpt">Build a Research Assistant GPT</h2>
+<p>The Research Assistant GPT is a custom GPT designed to support technical writers during the research and analysis phase of documentation development.</p>
+<p>The GPT follows a standardized research process that can be adapted to different documentation types. It produces a structured research report that writers can review and use as an input for creating an initial documentation draft.</p>
+<p>The following sections describe how to design and configure the GPT.</p>
+<h3 id="1-define-the-research-architecture">1. Define the Research Architecture</h3>
+<p>The research architecture defines the research scope, information requirements, source hierarchy, and relationship between technical requirements and information sources.</p>
+<h4>Establish the Scope and Requirements</h4>
+<p>Define the documentation types that the GPT will support and identify the technical information required for each type.</p>
+<p>Create a common research process with documentation-specific information requirements.</p>
+<p>For example:</p>
+<ul>
+<li>An <strong>Installation Guide</strong> may require prerequisites, system requirements, installation procedures, configuration steps, and verification procedures.</li>
+<li><strong>Release Notes</strong> may require information about the previous version, changes in the current version, resolved issues, known issues, and upgrade considerations.</li>
+</ul>
+<p>This approach allows the GPT to follow a consistent research process while adapting its findings to the requirements of each documentation type.</p>
+<h4>Establish a Source Hierarchy</h4>
+<p>Define which sources the GPT should prioritize during research.</p>
+<p>The source hierarchy should prioritize authoritative and current information, such as:</p>
+<ol>
+<li>Official product documentation</li>
+<li>Official product specifications</li>
+<li>Official technical references</li>
+<li>Approved internal documentation</li>
+<li>Other reliable sources, when appropriate</li>
+</ol>
+<p>The GPT should distinguish verified information from assumptions and should not present unsupported information as fact.</p>
+<p>A defined source hierarchy improves the consistency and reliability of research findings.</p>
+<h4>Map Sources to Technical Requirements</h4>
+<p>Map each technical requirement to the sources that are most likely to contain the required information.</p>
+<p>For example:</p>
+<table>
+<thead>
+<tr>
+<th>Technical Requirement</th>
+<th>Preferred Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Installation prerequisites</td>
+<td>Installation documentation</td>
+</tr>
+<tr>
+<td>System requirements</td>
+<td>Product documentation or specification</td>
+</tr>
+<tr>
+<td>Configuration parameters</td>
+<td>Configuration reference</td>
+</tr>
+<tr>
+<td>Known issues</td>
+<td>Release notes or support documentation</td>
+</tr>
+<tr>
+<td>API behavior</td>
+<td>API reference</td>
+</tr>
+</tbody>
+</table>
+<p>This mapping helps the GPT identify where to search for specific information and reduces unnecessary research across irrelevant sources.</p>
+<h3 id="2-research-and-verify-information">2. Research and Verify Information</h3>
+<p>The GPT should extract findings from available sources and associate each finding with supporting evidence.</p>
+<p>It should not present assumptions, interpretations, or unverified information as established facts.</p>
+<h4>Conduct Research and Extract Evidence</h4>
+<p>The GPT should:</p>
+<ul>
+<li>Research the identified sources.</li>
+<li>Extract information relevant to the defined requirements.</li>
+<li>Associate each finding with its supporting evidence and source.</li>
+<li>Distinguish between information explicitly stated in a source and conclusions derived from that information.</li>
+<li>Record the source used to support each significant finding.</li>
+</ul>
+<p>This creates a traceable relationship between each research finding and its source.</p>
+<h4>Evaluate Research and Evidence</h4>
+<p>Evaluate each source using criteria such as:</p>
+<ul>
+<li><strong>Authority</strong> — Is the source published by an authoritative organization or subject-matter expert?</li>
+<li><strong>Relevance</strong> — Does the source directly address the research requirement?</li>
+<li><strong>Version</strong> — Does the information apply to the required product or version?</li>
+<li><strong>Evidence strength</strong> — Does the source provide sufficient evidence to support the finding?</li>
+</ul>
+<p>Classify findings using a consistent verification status:</p>
+<ul>
+<li><strong>Verified</strong> — Supported by sufficient evidence from an authoritative source.</li>
+<li><strong>Partially verified</strong> — Some supporting information is available, but additional verification is required.</li>
+<li><strong>Unverified</strong> — Required evidence is not available.</li>
+<li><strong>Conflicting</strong> — Reliable sources provide different information.</li>
+</ul>
+<p>This classification helps writers determine which findings can be used directly and which require additional verification.</p>
+<h4>Define Conflict-Resolution Rules</h4>
+<p>When multiple sources provide conflicting information, the GPT should compare the sources using the defined source hierarchy.</p>
+<p>The GPT should not combine conflicting information or select an answer based solely on inference.</p>
+<p>If the conflict cannot be resolved using the available evidence, the GPT should:</p>
+<ol>
+<li>Identify the conflicting information.</li>
+<li>Identify the sources involved.</li>
+<li>Explain the conflict.</li>
+<li>Mark the finding as <strong>Conflicting</strong>.</li>
+<li>Create a verification question for the writer or appropriate subject-matter expert (SME).</li>
+</ol>
+<p>This prevents unsupported conclusions from entering the documentation.</p>
+<h4>Define Information Gaps and Verification Records</h4>
+<p>The GPT should identify required technical information that cannot be verified using the available sources.</p>
+<p>Missing information must be marked as <strong>Unverified</strong> rather than being assumed or generated.</p>
+<p>For each significant information gap, the GPT should create a specific verification question that can be:</p>
+<ul>
+<li>Answered by the technical writer.</li>
+<li>Sent to an appropriate SME.</li>
+<li>Resolved by locating an authoritative source.</li>
+</ul>
+<p>This converts missing information into a defined follow-up task.</p>
+<h3 id="3-standardize-the-research-output">3. Standardize the Research Output</h3>
+<p>Define a consistent output format so that research findings are presented in a predictable structure.</p>
+<p>The research report should contain:</p>
+<ol>
+<li><strong>Research Scope</strong> — Defines what was investigated.</li>
+<li><strong>Validated Findings</strong> — Lists findings supported by evidence.</li>
+<li><strong>Evidence and Sources</strong> — Identifies the evidence and sources supporting each finding.</li>
+<li><strong>Conflicts</strong> — Documents conflicting information that requires resolution.</li>
+<li><strong>Information Gaps</strong> — Identifies required information that could not be verified.</li>
+<li><strong>Follow-up Questions</strong> — Provides questions for the writer or SME.</li>
+</ol>
+<p>The output structure should remain consistent across documentation types, while the actual research requirements and findings vary according to the documentation type.</p>
+<p>A standardized output makes research easier for technical writers to review, validate, and use during documentation development.</p>
+<h3 id="4-build-test-and-improve-the-gpt">4. Build, Test, and Improve the GPT</h3>
+<p>After defining the research methodology, convert the methodology into instructions that the GPT can follow.</p>
+<h4>Define the System Instructions</h4>
+<p>Convert the following elements into the GPT's system instructions:</p>
+<ul>
+<li>Research methodology</li>
+<li>Documentation-specific requirements</li>
+<li>Source hierarchy</li>
+<li>Evidence evaluation criteria</li>
+<li>Verification statuses</li>
+<li>Conflict-resolution rules</li>
+<li>Information-gap rules</li>
+<li>Research output structure</li>
+</ul>
+<p>The instructions should clearly define what the GPT should do, what it should avoid, and how it should present research findings.</p>
+<h4>Create the GPT Prompt</h4>
+<p>Use an AI tool to convert the research methodology into a structured prompt for the custom GPT.</p>
+<p>Review the generated prompt before using it. The prompt should accurately represent the research methodology and verification rules defined in this guide.</p>
+<p>Copy the finalized prompt for use when configuring the GPT.</p>
+<h4>Configure the Custom GPT</h4>
+<blockquote>
+<p><strong>Assumption:</strong> You have opened ChatGPT and signed in with an account that has access to GPT creation.</p>
+</blockquote>
+<p>Follow these steps:</p>
+<ol>
+<li>Open the <strong>sidebar</strong>.</li>
+<li>Select <strong>GPTs</strong>.</li>
+<li>Select <strong>Create</strong>.</li>
+<li>Enter the prepared prompt in the GPT builder.</li>
+<li>Select <strong>Configure</strong>.</li>
+<li>Enter the GPT name in the <strong>Name</strong> field.</li>
+<li>Enter a concise description in the <strong>Description</strong> field.</li>
+<li>Enter the research methodology and behavioral rules in the <strong>Instructions</strong> field.</li>
+<li>In <strong>Knowledge</strong>, upload approved reference material and representative research-output samples.</li>
+<li>In <strong>Capabilities</strong>, enable the capabilities required by the research workflow, such as <strong>Code Interpreter &amp; Data Analysis</strong> or <strong>Image Generation</strong>, when applicable.</li>
+<li>Enable <strong>Web Search</strong> only if the research workflow requires the GPT to retrieve information from current external sources.</li>
+<li>Create the GPT.</li>
+<li>Test the GPT using representative research scenarios.</li>
+</ol>
+<h4>Test the GPT</h4>
+<p>Test the GPT using different documentation types and research scenarios.</p>
+<p>The test should verify whether the GPT:</p>
+<ul>
+<li>Follows the defined research scope.</li>
+<li>Uses the required source hierarchy.</li>
+<li>Provides evidence for findings.</li>
+<li>Correctly identifies verification status.</li>
+<li>Detects conflicting information.</li>
+<li>Identifies information gaps.</li>
+<li>Generates useful follow-up questions.</li>
+<li>Follows the standardized output structure.</li>
+<li>Avoids presenting assumptions as facts.</li>
+</ul>
+<p>Record the test results and update the GPT instructions when deficiencies are identified.</p>
+<p>Repeat the test-and-improve cycle until the GPT consistently produces research reports that meet the defined requirements.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>A Research Assistant GPT can standardize repetitive research and analysis activities in the technical writing workflow.</p>
+<p>The effectiveness of the GPT depends primarily on the quality of its research methodology, source hierarchy, verification rules, instructions, and testing process.</p>
+<p>A well-defined workflow allows the GPT to produce traceable research findings while clearly identifying conflicts, information gaps, and items that require SME verification.</p>
+<p>The resulting research report can provide technical writers with a structured and evidence-based starting point for developing documentation.</p>
+</article>
+    </main>
+    <aside class="right-rail"><strong>Reading guide</strong><a href="#research-assistant-gpt">Start reading ↑</a><a href="../../index.html">Portfolio home</a></aside>
+  </div>
+  <footer><div class="footer-inner"><span>© 2026 Omkar Musale</span><span>Technical Writing Portfolio</span></div></footer>
+</body>
+</html>
