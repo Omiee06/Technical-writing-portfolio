@@ -1,24 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omkar Musale | Software Technical Writer</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Omkar Musale — Technical Writer focused on software and API documentation.">
+  <meta name="theme-color" content="#0b1220">
+  <title>Omkar Musale | Technical Writer</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0b1220;
+      --panel: #111c2e;
+      --panel-soft: #142238;
+      --text: #edf3fb;
+      --muted: #a8b6c9;
+      --line: rgba(173, 193, 219, .16);
+      --accent: #72b7ff;
+      --accent-strong: #3d96f5;
+      --white: #fff;
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 80% 0%, rgba(61,150,245,.13), transparent 34rem),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; }
+    .shell { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
+    .topbar {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(11,18,32,.88); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font-weight: 750; letter-spacing: -.03em; text-decoration: none; }
+    .brand span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 25px; }
+    .nav-links a { color: var(--muted); font-size: .92rem; text-decoration: none; transition: color .2s; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--white); }
+    .nav-links .nav-cta { color: var(--text); border: 1px solid var(--line); border-radius: 999px; padding: 8px 15px; }
+    .hero { padding: 104px 0 88px; display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(250px, .65fr); gap: 64px; align-items: center; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--accent); font-size: .78rem; font-weight: 750; letter-spacing: .14em; text-transform: uppercase; }
+    .eyebrow:before { content: ""; width: 24px; height: 1px; background: var(--accent); }
+    h1 { margin: 20px 0 14px; font-size: clamp(2.8rem, 6vw, 5.1rem); line-height: 1.03; letter-spacing: -.065em; }
+    .hero h2 { margin: 0; color: #c5d5e9; font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 550; letter-spacing: -.025em; }
+    .hero-copy { max-width: 650px; margin: 22px 0 0; color: var(--muted); font-size: 1.08rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 18px; border-radius: 9px; text-decoration: none; font-weight: 700; font-size: .92rem; transition: transform .2s, background .2s; }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { background: var(--accent-strong); color: #071321; }
+    .button-secondary { border: 1px solid var(--line); color: var(--text); }
+    .profile-card { border: 1px solid var(--line); background: linear-gradient(145deg, rgba(20,34,56,.94), rgba(17,28,46,.78)); border-radius: 18px; padding: 26px; box-shadow: 0 24px 70px rgba(0,0,0,.2); }
+    .profile-mark { width: 62px; height: 62px; display: grid; place-items: center; border-radius: 16px; background: rgba(114,183,255,.13); color: var(--accent); font-size: 1.35rem; font-weight: 800; letter-spacing: -.05em; }
+    .profile-card h3 { margin: 18px 0 4px; font-size: 1.15rem; }
+    .profile-card p { margin: 0; color: var(--muted); font-size: .92rem; }
+    .profile-meta { display: grid; gap: 13px; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line); }
+    .meta-row { display: flex; justify-content: space-between; gap: 16px; font-size: .86rem; }
+    .meta-row span:first-child { color: var(--muted); }
+    section { padding: 76px 0; border-top: 1px solid var(--line); }
+    .section-head { max-width: 680px; margin-bottom: 34px; }
+    .section-kicker { color: var(--accent); font-size: .76rem; font-weight: 750; letter-spacing: .14em; text-transform: uppercase; }
+    h2.section-title { margin: 8px 0 10px; font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.15; letter-spacing: -.045em; }
+    .section-intro { margin: 0; color: var(--muted); }
+    .about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 44px; }
+    .about-copy p { margin: 0 0 16px; color: var(--muted); }
+    .focus-panel { padding: 25px; border-radius: 14px; border: 1px solid var(--line); background: var(--panel); }
+    .focus-panel h3 { margin: 0 0 16px; font-size: 1rem; }
+    .focus-list { display: flex; flex-wrap: wrap; gap: 9px; }
+    .tag { border: 1px solid var(--line); color: #c8d6e8; background: rgba(255,255,255,.025); border-radius: 7px; padding: 7px 10px; font-size: .82rem; }
+    .projects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .project-card { display: flex; flex-direction: column; min-height: 260px; padding: 26px; background: var(--panel); border: 1px solid var(--line); border-radius: 15px; transition: border-color .2s, transform .2s; }
+    .project-card:hover { border-color: rgba(114,183,255,.55); transform: translateY(-3px); }
+    .project-type { color: var(--accent); font-size: .75rem; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
+    .project-card h3 { margin: 13px 0 9px; font-size: 1.3rem; letter-spacing: -.025em; }
+    .project-card p { margin: 0; color: var(--muted); font-size: .94rem; }
+    .project-link { display: inline-flex; align-items: center; gap: 8px; margin-top: auto; padding-top: 25px; color: var(--accent); font-size: .9rem; font-weight: 700; text-decoration: none; }
+    .project-link:hover { color: var(--white); }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .skill-card { padding: 22px; border: 1px solid var(--line); border-radius: 13px; background: var(--panel); }
+    .skill-card h3 { margin: 0 0 8px; font-size: 1rem; }
+    .skill-card p { margin: 0; color: var(--muted); font-size: .9rem; }
+    .contact-panel { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 32px; border-radius: 16px; border: 1px solid rgba(114,183,255,.25); background: linear-gradient(120deg, rgba(61,150,245,.13), rgba(17,28,46,.7)); }
+    .contact-panel h2 { margin: 0 0 7px; font-size: 1.7rem; letter-spacing: -.04em; }
+    .contact-panel p { margin: 0; color: var(--muted); }
+    footer { padding: 26px 0 34px; color: #8293aa; font-size: .83rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 22px; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 32px, var(--max)); }
+      .nav { min-height: 64px; }
+      .nav-links { gap: 13px; }
+      .nav-links a { font-size: .82rem; }
+      .nav-links .nav-cta { display: none; }
+      .hero { grid-template-columns: 1fr; gap: 34px; padding: 76px 0 62px; }
+      .profile-card { max-width: 440px; }
+      section { padding: 60px 0; }
+      .about-grid, .projects { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .contact-panel { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 440px) {
+      .nav-links { gap: 10px; }
+      .nav-links a { font-size: .76rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .hero { padding-top: 62px; }
+    }
+  </style>
 </head>
-
 <body>
+  <header class="topbar">
+    <nav class="nav shell" aria-label="Main navigation">
+      <a class="brand" href="#home">OM<span>.</span></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#work">Projects</a>
+        <a href="#skills">Capabilities</a>
+        <a class="nav-cta" href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
 
-    <h1>Omkar Musale</h1>
+  <main>
+    <div class="shell">
+      <section class="hero" id="home" style="border-top:0">
+        <div>
+          <div class="eyebrow">Technical Writing Portfolio</div>
+          <h1>Omkar<br>Musale<span style="color:var(--accent)">.</span></h1>
+          <h2>Software &amp; API Documentation</h2>
+          <p class="hero-copy">I create clear, structured, and task-oriented documentation that helps technical users understand software, follow workflows, and resolve problems.</p>
+          <div class="actions">
+            <a class="button button-primary" href="#work">Explore my work <span aria-hidden="true">&nbsp;↗</span></a>
+            <a class="button button-secondary" href="https://github.com/Omiee06" target="_blank" rel="noopener noreferrer">GitHub profile</a>
+          </div>
+        </div>
+        <aside class="profile-card" aria-label="Professional profile">
+          <div class="profile-mark" aria-hidden="true">OM</div>
+          <h3>Technical Writer</h3>
+          <p>Software documentation · API documentation fundamentals · AI-assisted documentation</p>
+          <div class="profile-meta">
+            <div class="meta-row"><span>Experience</span><strong>2+ years</strong></div>
+            <div class="meta-row"><span>Focus</span><strong>Task-oriented content</strong></div>
+            <div class="meta-row"><span>Format</span><strong>Guides &amp; tutorials</strong></div>
+          </div>
+        </aside>
+      </section>
 
-    <h2>Software Technical Writer</h2>
+      <section id="about">
+        <div class="section-head">
+          <div class="section-kicker">01 / About</div>
+          <h2 class="section-title">Making complex workflows easier to use.</h2>
+          <p class="section-intro">A practical approach to researching, structuring, and communicating technical information.</p>
+        </div>
+        <div class="about-grid">
+          <div class="about-copy">
+            <p>I am a Technical Writer with 2+ years of experience developing User Guides, Installation Guides, Procedural Guides, and Troubleshooting documentation.</p>
+            <p>My work involves requirements analysis, complex engineering and technical workflows, SME collaboration, technical reviews, and documentation quality checks to produce clear, structured, task-oriented content.</p>
+            <p>My documentation interests and hands-on work include API documentation fundamentals, REST APIs, Markdown, Git/GitHub, and AI-assisted documentation. This portfolio demonstrates my approach to researching technical subjects, understanding software workflows, structuring information, and turning complex concepts into usable documentation.</p>
+          </div>
+          <div class="focus-panel">
+            <h3>Documentation focus</h3>
+            <div class="focus-list">
+              <span class="tag">User Guides</span>
+              <span class="tag">Installation Guides</span>
+              <span class="tag">Procedural Guides</span>
+              <span class="tag">Troubleshooting</span>
+              <span class="tag">API Documentation</span>
+              <span class="tag">REST APIs</span>
+              <span class="tag">AI-assisted Documentation</span>
+              <span class="tag">Technical Reviews</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    <p>
-        Software & API Documentation
-    </p>
+      <section id="work">
+        <div class="section-head">
+          <div class="section-kicker">02 / Selected work</div>
+          <h2 class="section-title">Documentation projects</h2>
+          <p class="section-intro">A selection of sample documentation projects demonstrating structure, clarity, and user-focused technical communication.</p>
+        </div>
+        <div class="projects">
+          <article class="project-card">
+            <div class="project-type">User guide</div>
+            <h3>TaskFlow User Guide</h3>
+            <p>A sample software user guide covering task creation, task management, status tracking, search, filtering, troubleshooting, and FAQs.</p>
+            <a class="project-link" href="https://github.com/Omiee06/Technical-writing-portfolio/blob/Tech-Writing/user-guides/taskflow/README.md" target="_blank" rel="noopener noreferrer">View documentation <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="project-card">
+            <div class="project-type">Design &amp; implementation guide</div>
+            <h3>Research Assistant GPT</h3>
+            <p>A sample design of a research assistant for technical writers.</p>
+            <a class="project-link" href="https://github.com/Omiee06/Technical-writing-portfolio/blob/Tech-Writing/Design-and-Implementation-guide/Research-assistant-GPT/README.md" target="_blank" rel="noopener noreferrer">View documentation <span aria-hidden="true">↗</span></a>
+          </article>
+        </div>
+      </section>
 
-    <p>
-        Welcome to my technical writing portfolio.
-    </p>
+      <section id="skills">
+        <div class="section-head">
+          <div class="section-kicker">03 / Capabilities</div>
+          <h2 class="section-title">Tools, methods &amp; subject areas</h2>
+          <p class="section-intro">Areas represented in my current documentation practice and portfolio work.</p>
+        </div>
+        <div class="skills-grid">
+          <article class="skill-card"><h3>Documentation</h3><p>User guides, installation guides, procedural content, troubleshooting, technical reviews.</p></article>
+          <article class="skill-card"><h3>API fundamentals</h3><p>REST API concepts and API documentation fundamentals.</p></article>
+          <article class="skill-card"><h3>Authoring &amp; collaboration</h3><p>Markdown, Git, and GitHub-based documentation workflows.</p></article>
+          <article class="skill-card"><h3>Content development</h3><p>Requirements analysis, information structuring, and task-oriented writing.</p></article>
+          <article class="skill-card"><h3>Review &amp; quality</h3><p>SME collaboration, technical reviews, and documentation quality checks.</p></article>
+          <article class="skill-card"><h3>Emerging workflows</h3><p>AI-assisted documentation and research workflows.</p></article>
+        </div>
+      </section>
 
+      <section id="contact">
+        <div class="contact-panel">
+          <div>
+            <div class="section-kicker">04 / Contact</div>
+            <h2>Let's connect.</h2>
+            <p>Explore my documentation work and code repositories on GitHub.</p>
+          </div>
+          <a class="button button-primary" href="https://github.com/Omiee06" target="_blank" rel="noopener noreferrer">Visit GitHub <span aria-hidden="true">&nbsp;↗</span></a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <span>© <span id="year">2026</span> Omkar Musale</span>
+      <span>Technical Writing Portfolio</span>
+    </div>
+  </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
