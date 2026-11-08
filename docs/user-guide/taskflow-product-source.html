@@ -10,7 +10,8 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:88px}
 body{margin:0;background:var(--bg);color:var(--text);font:16px/1.75 Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
 header{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(18px,5vw,80px);background:#0a1120;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
 .brand{color:var(--text);font-weight:800;font-size:20px;letter-spacing:-.04em}
 .back{color:var(--muted);font-weight:600}
@@ -19,7 +20,7 @@ header{height:64px;display:flex;align-items:center;justify-content:space-between
 .side h2,.reading h2{font-size:12px;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;border:0;margin:0 0 14px;padding:0}
 .side a,.reading a{display:block;color:var(--muted);font-size:13px;padding:4px 0}
 .side a.level-3{padding-left:12px}
-.side a: hover,reading a:hover{color:var(--accent)}
+.side a: hover,.reading a:hover{color:var(--accent)}
 main{min-width:0}
 .eyebrow{color:var(--accent);font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
 h1{font-size:clamp(30px,4vw,46px);line-height:1.15;letter-spacing:-.04em;margin:12px 0 18px}
@@ -32,8 +33,7 @@ ul,ol{padding-left:25px;margin:10px 0 20px}
 li{margin:5px 0}
 strong{color:#f1f5fb}
 code{background:var(--panel);padding:2px 5px;border-radius:4px}
-hr{border:0;border-top:1px solid var(--line);margin:30px 0}
-main>h2:first-of-type{margin-top:36px}
+.nested-item{margin-left:28px}
 .footer{border-top:1px solid var(--line);margin-top:55px;padding-top:18px;color:var(--muted);font-size:13px}
 @media(max-width:1050px){.layout{grid-template-columns:190px minmax(0,1fr)}.reading{display:none}}
 @media(max-width:700px){.layout{display:block;padding:24px 18px}.side{position:static;max-height:none;margin-bottom:28px;padding:16px;background:var(--panel);border:1px solid var(--line);border-radius:10px}.side nav{columns:2}header{height:56px}.back{font-size:13px}}
@@ -44,18 +44,221 @@ main>h2:first-of-type{margin-top:36px}
   <a class="brand" href="../../">OM.</a>
   <a class="back" href="./">← Back to TaskFlow User Guide</a>
 </header>
+
 <div class="layout">
   <aside class="side">
     <h2>On this page</h2>
-    <nav><a class="level-2" href="#1-product-inputs">1. Product Inputs</a><a class="level-3" href="#product-name">Product Name</a><a class="level-3" href="#product-description">Product Description</a><a class="level-3" href="#target-users">Target Users</a><a class="level-3" href="#core-features">Core Features</a><a class="level-3" href="#initial-documentation-inputs">Initial Documentation Inputs</a><a class="level-3" href="#clarifications-identified-during-review">Clarifications Identified During Review</a><a class="level-2" href="#2-follow-up-sme-questions-and-answers">2. Follow-up SME Questions and Answers</a><a class="level-3" href="#a-task-creation">A. Task Creation</a><a class="level-3" href="#b-task-editing">B. Task Editing</a><a class="level-3" href="#c-task-status">C. Task Status</a><a class="level-3" href="#d-task-deletion">D. Task Deletion</a><a class="level-3" href="#e-dashboard-and-filtering">E. Dashboard and Filtering</a><a class="level-3" href="#f-task-search">F. Task Search</a></nav>
+    <nav>
+      <a class="level-2" href="#1-product-inputs">1. Product Inputs</a>
+      <a class="level-3" href="#product-name">Product Name</a>
+      <a class="level-3" href="#product-description">Product Description</a>
+      <a class="level-3" href="#target-users">Target Users</a>
+      <a class="level-3" href="#core-features">Core Features</a>
+      <a class="level-3" href="#initial-documentation-inputs">Initial Documentation Inputs</a>
+      <a class="level-3" href="#clarifications-identified-during-review">Clarifications Identified During Review</a>
+      <a class="level-2" href="#2-follow-up-sme-questions-and-answers">2. Follow-up SME Questions and Answers</a>
+      <a class="level-3" href="#a-task-creation">A. Task Creation</a>
+      <a class="level-3" href="#b-task-editing">B. Task Editing</a>
+      <a class="level-3" href="#c-task-status">C. Task Status</a>
+      <a class="level-3" href="#d-task-deletion">D. Task Deletion</a>
+      <a class="level-3" href="#e-dashboard-and-filtering">E. Dashboard and Filtering</a>
+      <a class="level-3" href="#f-task-search">F. Task Search</a>
+    </nav>
   </aside>
+
   <main>
     <div class="eyebrow">Technical documentation / Portfolio project</div>
+
+    <!-- Title appears only once -->
     <h1>TaskFlow — Product Inputs and Follow-up SME Q&amp;A</h1>
-    <div class="notice"><strong>Note:</strong> TaskFlow is a fictional portfolio project. The SME/Engineering answers below are simulated inputs.</div>
-    <h1 id="taskflow-product-inputs-and-follow-up-sme-q-a">TaskFlow — Product Inputs and Follow-up SME Q&amp;A</h1><div class="notice"><strong>Note:</strong> TaskFlow is a fictional portfolio project. The SME/Engineering answers below are simulated inputs.</div><h2 id="1-product-inputs">1. Product Inputs</h2><h3 id="product-name">Product Name</h3><p>TaskFlow</p><h3 id="product-description">Product Description</h3><p>A web-based task management application that allows users to organize and track work.</p><h3 id="target-users">Target Users</h3><ul><li>Individual users managing personal tasks</li><li>Small teams managing project work</li><li>Team members who need to track task progress</li></ul><h3 id="core-features">Core Features</h3><ol><li>Create tasks with a title, description, due date, and priority.</li><li>Edit, complete, and delete tasks.</li><li>Track tasks using these statuses:<ul class="nested"><li>To Do</li><li>In Progress</li><li>Completed</li></ul></li><li>View tasks on a dashboard, filter by status, and see upcoming due dates.</li><li>Search for tasks by title.</li></ol><h3 id="initial-documentation-inputs">Initial Documentation Inputs</h3><ul><li><strong>Audience initially stated:</strong> "SME (Small and Medium-sized Enterprises) and Administration".</li><li><strong>Goal:</strong> Help users understand the workflow and features of the TaskFlow application.</li><li><strong>Tasks to cover:</strong> Create, edit, assign, track, and manage tasks.</li><li><strong>Exclusions:</strong> Software development information and advanced troubleshooting.</li><li><strong>Proposed sections:</strong><ul class="nested"><li>Introduction</li><li>Getting Started</li><li>Workflows</li><li>Advanced features</li><li>Payment Info (if required)</li><li>Cancellation and Refund (if required)</li><li>Help and Support</li><li>FAQs</li></ul></li></ul><h3 id="clarifications-identified-during-review">Clarifications Identified During Review</h3><ul><li>The clarified primary audience was individual users and small-team members.</li><li>Task assignment was not included in the supplied product brief, so it was not treated as a confirmed feature.</li><li>The product brief did not support payment, cancellation, and refund information.</li><li>Basic user-facing troubleshooting could be included; advanced/internal troubleshooting remained out of scope.</li></ul><h2 id="2-follow-up-sme-questions-and-answers">2. Follow-up SME Questions and Answers</h2><h3 id="a-task-creation">A. Task Creation</h3><p><strong>Q1. What validation rules apply to the task title, description, and due date?</strong></p><p><strong>Answer:</strong></p><ul><li>A task title is required.</li><li>The title can contain a maximum of 100 characters.</li><li>The due date cannot be earlier than the current date.</li><li>Correct the information and save again if validation fails.</li></ul><p><strong>Q2. What can cause a newly created task not to appear in the task list or dashboard?</strong></p><p><strong>Answer:</strong></p><p>The task list does not automatically refresh after task creation. Refresh the page to display the newly created task.</p><p><strong>Q3. What error messages can users receive while creating a task?</strong></p><p><strong>Answer:</strong></p><p>No specific error message text was provided in the source.</p><p><strong>Q4. Are there any restrictions on the information users can enter?</strong></p><p><strong>Answer:</strong></p><p>The confirmed restrictions are that the title is required, the title has a 100-character maximum, and the due date cannot be earlier than the current date. No other field restrictions were provided.</p><h3 id="b-task-editing">B. Task Editing</h3><p><strong>Q1. What can cause changes to a task to fail to save?</strong></p><p><strong>Answer:</strong></p><p>The user must select Save after making changes. If Save is not selected, the changes are not saved.</p><p><strong>Q2. What can cause an updated task to remain unchanged or not appear updated?</strong></p><p><strong>Answer:</strong></p><p>The source identifies selecting Save as the required action. It does not provide a separate explanation for other display or refresh issues after editing.</p><p><strong>Q3. Which task fields can users edit after creation?</strong></p><p><strong>Answer:</strong></p><p>The source does not specify the complete list of editable fields.</p><p><strong>Q4. Are there user or permission restrictions for editing a task?</strong></p><p><strong>Answer:</strong></p><p>Any user who can view a task can edit it.</p><p><strong>Q5. What error messages can users receive while editing a task?</strong></p><p><strong>Answer:</strong></p><p>No specific error message text was provided in the source.</p><h3 id="c-task-status">C. Task Status</h3><p><strong>Q1. Can users change a task between To Do, In Progress, and Completed?</strong></p><p><strong>Answer:</strong></p><p>Yes. Users can move a task among To Do, In Progress, and Completed, including moving it back to an earlier status.</p><p><strong>Q2. What can cause a task's status change not to be saved?</strong></p><p><strong>Answer:</strong></p><p>The user must select Save after changing the status.</p><p><strong>Q3. What restrictions apply to changing a task's status?</strong></p><p><strong>Answer:</strong></p><p>No additional restrictions were provided. The source states that users can move between all three statuses.</p><p><strong>Q4. What error messages can users receive when changing status?</strong></p><p><strong>Answer:</strong></p><p>No specific error message text was provided in the source.</p><h3 id="d-task-deletion">D. Task Deletion</h3><p><strong>Q1. What can cause task deletion to fail or appear incomplete?</strong></p><p><strong>Answer:</strong></p><p>The source does not identify a deletion failure condition. A deleted task may remain visible until the page is refreshed.</p><p><strong>Q2. What can cause a deleted task to remain visible?</strong></p><p><strong>Answer:</strong></p><p>The task list may not refresh automatically after deletion. Refresh the page to remove the deleted task from the displayed list.</p><p><strong>Q3. Is deletion permanent, or can deleted tasks be restored?</strong></p><p><strong>Answer:</strong></p><p>Deleted tasks cannot be restored.</p><p><strong>Q4. Are there restrictions on who can delete a task?</strong></p><p><strong>Answer:</strong></p><p>No deletion-permission details were provided in the source.</p><p><strong>Q5. What error messages can users receive while deleting a task?</strong></p><p><strong>Answer:</strong></p><p>No specific error-message text was provided in the source.</p><h3 id="e-dashboard-and-filtering">E. Dashboard and Filtering</h3><p><strong>Q1. What can cause a selected filter not to be applied?</strong></p><p><strong>Answer:</strong></p><p>The source says users must select a status and apply the filter. It does not provide further causes for filter failure.</p><p><strong>Q2. What can cause the task list not to update after a filter is selected?</strong></p><p><strong>Answer:</strong></p><p>The source does not provide a separate explanation beyond the instruction to select a status and apply the filter.</p><p><strong>Q3. Can users filter tasks by due date or priority as well as status?</strong></p><p><strong>Answer:</strong></p><p>No. Filtering by status is supported. Due-date and priority filters are not supported.</p><p><strong>Q4. What error messages can users receive while filtering tasks?</strong></p><p><strong>Answer:</strong></p><p>No specific error message text was provided in the source.</p><h3 id="f-task-search">F. Task Search</h3><p><strong>Q1. What can cause search to return no results when a matching task exists?</strong></p><p><strong>Answer:</strong></p><p>Search is case-sensitive. A capitalization mismatch can prevent the task from appearing in the results. Use the correct capitalization.</p><p>Q2. Does search require the complete task title, or does it support partial text?</p><p>Answer:</p><p>Search supports both partial and complete task titles.</p><p>Q3. What error messages can users receive while searching?</p><p>Answer:</p><p>No specific error message text was provided in the source.</p>
-    <div class="footer">TaskFlow is a fictional portfolio exercise. The answers on this page are simulated inputs.</div>
+
+    <!-- Disclaimer appears only once -->
+    <div class="notice">
+      <strong>Note:</strong> TaskFlow is a fictional portfolio project. The SME/Engineering answers below are simulated inputs.
+    </div>
+
+    <h2 id="1-product-inputs">1. Product Inputs</h2>
+
+    <h3 id="product-name">Product Name</h3>
+    <p>TaskFlow</p>
+
+    <h3 id="product-description">Product Description</h3>
+    <p>A web-based task management application that allows users to organize and track work.</p>
+
+    <h3 id="target-users">Target Users</h3>
+    <ul>
+      <li>Individual users managing personal tasks</li>
+      <li>Small teams managing project work</li>
+      <li>Team members who need to track task progress</li>
+    </ul>
+
+    <h3 id="core-features">Core Features</h3>
+    <ol>
+      <li>Create tasks with a title, description, due date, and priority.</li>
+      <li>Edit, complete, and delete tasks.</li>
+      <li>Track tasks using these statuses:
+        <ul>
+          <li>To Do</li>
+          <li>In Progress</li>
+          <li>Completed</li>
+        </ul>
+      </li>
+      <li>View tasks on a dashboard, filter by status, and see upcoming due dates.</li>
+      <li>Search for tasks by title.</li>
+    </ol>
+
+    <h3 id="initial-documentation-inputs">Initial Documentation Inputs</h3>
+    <ul>
+      <li><strong>Audience initially stated:</strong> "SME (Small and Medium-sized Enterprises) and Administration".</li>
+      <li><strong>Goal:</strong> Help users understand the workflow and features of the TaskFlow application.</li>
+      <li><strong>Tasks to cover:</strong> Create, edit, assign, track, and manage tasks.</li>
+      <li><strong>Exclusions:</strong> Software development information and advanced troubleshooting.</li>
+      <li><strong>Proposed sections:</strong>
+        <ul>
+          <li>Introduction</li>
+          <li>Getting Started</li>
+          <li>Workflows</li>
+          <li>Advanced features</li>
+          <li>Payment Info (if required)</li>
+          <li>Cancellation and Refund (if required)</li>
+          <li>Help and Support</li>
+          <li>FAQs</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3 id="clarifications-identified-during-review">Clarifications Identified During Review</h3>
+    <ul>
+      <li>The clarified primary audience was individual users and small-team members.</li>
+      <li>Task assignment was not included in the supplied product brief, so it was not treated as a confirmed feature.</li>
+      <li>The product brief did not support payment, cancellation, and refund information.</li>
+      <li>Basic user-facing troubleshooting could be included; advanced/internal troubleshooting remained out of scope.</li>
+    </ul>
+
+    <h2 id="2-follow-up-sme-questions-and-answers">2. Follow-up SME Questions and Answers</h2>
+
+    <h3 id="a-task-creation">A. Task Creation</h3>
+
+    <p><strong>Q1. What validation rules apply to the task title, description, and due date?</strong></p>
+    <p><strong>Answer:</strong></p>
+    <ul>
+      <li>A task title is required.</li>
+      <li>The title can contain a maximum of 100 characters.</li>
+      <li>The due date cannot be earlier than the current date.</li>
+      <li>Correct the information and save again if validation fails.</li>
+    </ul>
+
+    <p><strong>Q2. What can cause a newly created task not to appear in the task list or dashboard?</strong></p>
+    <p><strong>Answer:</strong></p>
+    <p>The task list does not automatically refresh after task creation. Refresh the page to display the newly created task.</p>
+
+    <p><strong>Q3. What error messages can users receive while creating a task?</strong></p>
+    <p><strong>Answer:</strong></p>
+    <p>No specific error message text was provided in the source.</p>
+
+    <p><strong>Q4. Are there any restrictions on the information users can enter?</strong></p>
+    <p><strong>Answer:</strong></p>
+    <p>The confirmed restrictions are that the title is required, the title has a 100-character maximum, and the due date cannot be earlier than the current date. No other field restrictions were provided.</p>
+
+    <h3 id="b-task-editing">B. Task Editing</h3>
+
+    <p><strong>Q1. What can cause changes to a task to fail to save?</strong></p>
+    <p><strong>Answer:</strong></p>
+    <p>The user must select Save after making changes. If Save is not selected, the changes are not saved.</p>
+
+    <p><strong>Q2. What can cause an updated task to remain unchanged or not appear updated?</strong></p>
+    <p><strong>Answer:</strong></p>
+    <p>The source identifies selecting Save as the required action. It does not provide a separate explanation for other display or refresh issues after editing.</p>
+
+    <p><strong>Q3. Which task fields can users edit after creation?</strong></p>
+    <p><strong>Answer:</strong></p>
+    <p>The source does not specify the complete list of editable fields.</p>
+
+    <p><strong>Q4. Are there user or permission restrictions for editing a task?</strong></p>
+    <p><strong>Answer:</strong></p>
+    <p>Any user who can view a task can edit it.</p>
+
+    <p><strong>Q5. What error messages can users receive while editing a task?</strong></p>
+    <p><strong>Answer:</strong></p>
+    <p>No specific error message text was provided in the source.</p>
+
+    <h3 id="c-task-status">C. Task Status</h3>
+
+    <p><strong>Q1. Can users change a task between To Do, In Progress, and Completed?</strong></p>
+    <p><strong>Answer:</strong></p>
+    <p>Yes. Users can move a task among To Do, In Progress, and Completed, including moving it back to an earlier status.</p>
+
+    <p><strong>Q2. What can cause a task's status change not to be saved?</strong></p>
+    <p><strong>Answer:</strong></p>
+    <p>The user must select Save after changing the status.</p>
+
+    <p><strong>Q3. What restrictions apply to changing a task's status?</strong></p>
+    <p><strong>Answer:</strong></p>
+    <p>No additional restrictions were provided. The source states that users can move between all three statuses.</p>
+
+    <p><strong>Q4. What error messages can users receive when changing status?</strong></p>
+    <p><strong>Answer:</strong></p>
+    <p>No specific error message text was provided in the source.</p>
+
+    <h3 id="d-task-deletion">D. Task Deletion</h3>
+
+    <p><strong>Q1. What can cause task deletion to fail or appear incomplete?</strong></p>
+    <p><strong>Answer:</strong></p>
+    <p>The source does not identify a deletion failure condition. A deleted task may remain visible until the page is refreshed.</p>
+
+    <p><strong>Q2. What can cause a deleted task to remain visible?</strong></p>
+    <p><strong>Answer:</strong></p>
+    <p>The task list may not refresh automatically after deletion. Refresh the page to remove the deleted task from the displayed list.</p>
+
+    <p><strong>Q3. Is deletion permanent, or can deleted tasks be restored?</strong></p>
+    <p><strong>Answer:</strong></p>
+    <p>Deleted tasks cannot be restored.</p>
+
+    <p><strong>Q4. Are there restrictions on who can delete a task?</strong></p>
+    <p><strong>Answer:</strong></p>
+    <p>No deletion permission details were provided in the source.</p>
+
+    <p><strong>Q5. What error messages can users receive while deleting a task?</strong></p>
+    <p><strong>Answer:</strong></p>
+    <p>No specific error-message text was provided in the source.</p>
+
+    <h3 id="e-dashboard-and-filtering">E. Dashboard and Filtering</h3>
+
+    <p><strong>Q1. What can cause a selected filter not to be applied?</strong></p>
+    <p><strong>Answer:</strong></p>
+    <p>The source says users must select a status and apply the filter. It does not provide further causes for filter failure.</p>
+
+    <p><strong>Q2. What can cause the task list not to update after a filter is selected?</strong></p>
+    <p><strong>Answer:</strong></p>
+    <p>The source does not provide a separate explanation beyond the instruction to select a status and apply the filter.</p>
+
+    <p><strong>Q3. Can users filter tasks by due date or priority as well as status?</strong></p>
+    <p><strong>Answer:</strong></p>
+    <p>No. Filtering by status is supported. Due-date and priority filters are not supported.</p>
+
+    <p><strong>Q4. What error messages can users receive while filtering tasks?</strong></p>
+    <p><strong>Answer:</strong></p>
+    <p>No specific error message text was provided in the source.</p>
+
+    <h3 id="f-task-search">F. Task Search</h3>
+
+    <p><strong>Q1. What can cause search to return no results when a matching task exists?</strong></p>
+    <p><strong>Answer:</strong></p>
+    <p>Search is case-sensitive. A capitalization mismatch can prevent the task from appearing in the results. Use the correct capitalization.</p>
+
+    <p><strong>Q2. Does search require the complete task title, or does it support partial text?</strong></p>
+    <p><strong>Answer:</strong></p>
+    <p>Search supports both partial and complete task titles.</p>
+
+    <p><strong>Q3. What error messages can users receive while searching?</strong></p>
+    <p><strong>Answer:</strong></p>
+    <p>No specific error message text was provided in the source.</p>
+
+    <div class="footer">
+      TaskFlow is a fictional portfolio exercise. The answers on this page are simulated inputs.
+    </div>
   </main>
+
   <aside class="reading">
     <h2>Reading guide</h2>
     <a href="./">← TaskFlow User Guide</a>
