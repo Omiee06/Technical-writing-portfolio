@@ -1,6 +1,6 @@
 # TaskFlow — Product Inputs and Follow-up SME Q&A
 
-> **Note:** TaskFlow is a fictional portfolio project. The SME/Engineering answers below are simulated inputs from the source conversation, not responses from a real product team.
+> **Note:** TaskFlow is a fictional portfolio project. The SME/Engineering answers below are simulated inputs.
 
 ---
 
