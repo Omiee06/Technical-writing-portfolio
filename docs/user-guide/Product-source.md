@@ -49,9 +49,9 @@ A web-based task management application that allows users to organize and track 
 
 ### Clarifications Identified During Review
 
-- "SME" was ambiguous; the clarified primary audience was individual users and small-team members.
+- The clarified primary audience was individual users and small-team members.
 - Task assignment was not included in the supplied product brief, so it was not treated as a confirmed feature.
-- Payment, cancellation, and refund information was not supported by the product brief.
+- The product brief did not support payment, cancellation, and refund information.
 - Basic user-facing troubleshooting could be included; advanced/internal troubleshooting remained out of scope.
 
 ---
@@ -146,7 +146,7 @@ No additional restrictions were provided. The source states that users can move 
 
 **Answer:**
 
-No specific error-message text was provided in the source.
+No specific error message text was provided in the source.
 
 ---
 
